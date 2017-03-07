@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.dark {
+	background-color: beige;
+}
+
+.light {
+	background-color: white;
+}
+
+.red {
+	color: red;
+}
+
+.black {
+	color: black;
+}
+
+.bar {
+	background-color: black;
+}
+
+td {
+	text-align: center;
+	padding: 10px;
+}
+</style>
+<script src="lib/jquery-2.2.4.js"></script>
+<script src="play.js"></script>
+</head>
+<body>
+	<form id="mainForm">
+		<table>
+			<tr>
+				<td><input type="button" value="Roll" id="red_roll"
+					onclick="rollRedDice(diceData);"></input></td>
+
+				<td colspan="3" align="center"><input id="dice_1" type="text"
+					size="2"></input></td>
+				<td colspan="2" align="center"><input id="red_input1"
+					type="text" size="2"></input></td>
+
+				<td><input type="button" value="Go" id="red_go1"
+					onclick="handleGo('red',red_input1);"></input></td>
+
+				<td colspan="3" align="center"><input id="dice_2" type="text"
+					size="2"></input></td>
+				<td colspan="2" align="center"><input id="red_input2"
+					type="text" size="2"></input></td>
+
+				<td><input type="button" value="Go" id="red_go2"
+					onclick="handleGo('red',red_input2);"></input></td>
+
+
+			</tr>
+			<tr>
+				<td colspan="5" align="center"><label>Dice 1</label></td>
+				<td colspan="2" align="center"><label>Which Stone:</label></td>
+				<td colspan="5" align="center"><label>Dice 2</label></td>
+				<td colspan="1" align="center"><label>Which Stone:</label></td>
+
+			</tr>
+			<tr></tr>
+			<tr>
+				<td colspan="12" align="center"><label>Red Player</label></td>
+				<td></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td><input disabled="disabled" id="board_13" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_14" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_15" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_16" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_17" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_18" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_xx" type="text"
+					size="2" class="bar"></input></td>
+				<td><input disabled="disabled" id="board_19" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_20" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_21" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_22" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_23" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_24" type="text"
+					size="2" class="light"></input></td>
+			</tr>
+			<tr>
+				<td><label>13</label></td>
+				<td><label>14</label></td>
+				<td><label>15</label></td>
+				<td><label>16</label></td>
+				<td><label>17</label></td>
+				<td><label>18</label></td>
+				<td></td>
+				<td><label>19</label></td>
+				<td><label>20</label></td>
+				<td><label>21</label></td>
+				<td><label>22</label></td>
+				<td><label>23</label></td>
+				<td><label>24</label></td>
+			</tr>
+			<tr>
+				<td><input disabled="disabled" id="board_12" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_11" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_10" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_9" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_8" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_7" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_yy" type="text"
+					size="2" class="bar"></input></td>
+				<td><input disabled="disabled" id="board_6" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_5" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_4" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_3" type="text"
+					size="2" class="dark"></input></td>
+				<td><input disabled="disabled" id="board_2" type="text"
+					size="2" class="light"></input></td>
+				<td><input disabled="disabled" id="board_1" type="text"
+					size="2" class="dark"></input></td>
+			</tr>
+			<tr>
+				<td><label>12</label></td>
+				<td><label>11</label></td>
+				<td><label>10</label></td>
+				<td><label>09</label></td>
+				<td><label>08</label></td>
+				<td><label>07</label></td>
+				<td></td>
+				<td><label>06</label></td>
+				<td><label>05</label></td>
+				<td><label>04</label></td>
+				<td><label>03</label></td>
+				<td><label>02</label></td>
+				<td><label>01</label></td>
+			</tr>
+			<tr></tr>
+			<tr>
+				<td colspan="12" align="center"><label>Black Player</label></td>
+				<td></td>
+			</tr>
+			<tr></tr>
+
+		<tr>
+				<td><input type="button" value="Roll" id="black_roll"
+					onclick="rollBlackDice(diceData);"></input></td>
+
+				<td colspan="3" align="center"><input id="dice_3" type="text"
+					size="2"></input></td>
+				<td colspan="2" align="center"><input id="black_input1"
+					type="text" size="2"></input></td>
+
+				<td><input type="button" value="Go" id="black_go1"
+					onclick="handleGo('black',black_input1);"></input></td>
+
+				<td colspan="3" align="center"><input id="dice_4" type="text"
+					size="2"></input></td>
+				<td colspan="2" align="center"><input id="black_input2"
+					type="text" size="2"></input></td>
+
+				<td><input type="button" value="Go" id="black_go2"
+					onclick="handleGo('black',black_input2);"></input></td>
+
+
+			</tr>
+			<tr>
+				<td colspan="5" align="center"><label>Dice 1</label></td>
+				<td colspan="1" align="center"><label>Which Stone:</label></td>
+				<td colspan="5" align="center"><label>Dice 2</label></td>
+				<td colspan="1" align="center"><label>Which Stone:</label></td>
+
+			</tr>
+			
+
+		</table>
+	</form>
+</body>
+</html>
+
